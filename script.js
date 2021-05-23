@@ -12,11 +12,10 @@ $("#todaysDateEl").text(getDate);
 // select all span tags
 
 $("span").each(function(index) {
-  console.log(index);
   console.log($(this).text());
-
-  let calanderTime = parseInt(index) =+ 9;
-  console.log(calanderTime);
+  // this adds 9 to the index of the span tags
+  let indexTimeConverter = parseInt(index) + 9;
+  console.log(indexTimeConverter);
 
 })
 
