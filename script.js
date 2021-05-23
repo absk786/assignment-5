@@ -65,13 +65,15 @@ $(".form-control").on("click", function () {
   textInput.trigger("focus");
   // on click add a new p tag with the id - this way we can keep track of the tasks
   taskIdCounter++;
-  
-  
-  
-  $("#btn-").on("click", function () {
-    console.log("save button was clicked");
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  })
+
 }) 
+
+$(".save-button").on("click", function () {
+  console.log("save button was clicked");
+  console.log($(this).closest('textarea').text());
+  $(this).closest('#form-control').text
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+})
 
   });
