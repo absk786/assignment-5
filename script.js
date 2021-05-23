@@ -10,13 +10,18 @@ $(document).ready(function(){
 // this gets the date from the variable and displays it
 $("#todaysDateEl").text(getDate);
 // select all span tags
-let allSpanTags = $("span").text();
-// allSpanTags.find(text)
-console.log(allSpanTags);
+
+$("span").each(function(index) {
+  console.log(index);
+  console.log($(this).text());
+
+  let calanderTime = parseInt(index) =+ 9;
+  console.log(calanderTime);
+
+})
 
 // compare the value of text content to getHour
 
-// let calanderTime = $(this).text();
 // console.log(calanderTime);
 //  if (getHour = 5) {}
 
