@@ -1,7 +1,55 @@
+let tasks = [];
+let getDate = moment().format ("Do MMMM YYYY h:mm:ss a");
+let getHour =  moment().format ("h");
+let taskIdCounter = 0;
+// data-task-Id is linked with taskIdCounter. every time we add a new task we will add taskCounterId ++
+// setAttribute("data-task-id", taskIdCounter);The setAttribute() method can be used to add or update any attribute on an HTML element, but the only attribute we need for now is data-task-id, which we set to the current value of taskIdCounter.
 
-let getDate = moment ().format ("Do MMMM YYYY");
-console.log(getDate);
+// Jquery methods
+$(document).ready(function(){
+// this gets the date from the variable and displays it
 $("#todaysDateEl").text(getDate);
+// select all span tags
+let allSpanTags = $("span").text();
+// allSpanTags.find(text)
+console.log(allSpanTags);
+
+// compare the value of text content to getHour
+
+// let calanderTime = $(this).text();
+// console.log(calanderTime);
+//  if (getHour = 5) {}
 
 
 
+$(".form-control").on("click", function () {
+  // When that happens, we need to collect a few pieces of data: the 
+  // current value of the element, the parent element's ID, and the element's position in the list.
+  console.log("this has been clicked");
+  $(".form-control").on("blur", "textarea",function () {
+  // get the parent divs id
+  let timeStatus = $(this).closest().attr("id").replace("time-", );
+  console.log(timeStatus);
+  
+  } );
+   // console log the currently selected elemnt
+   console.log(this);
+   // get current text
+   let currentText = $(this).text().trim();
+  console.log(currentText);
+  // create a new text area input
+  let textInput = $("<textarea>").addClass("form-control").attr("data-task-id", taskIdCounter). val(currentText);
+  console.log(textInput);
+  console.log(taskIdCounter);
+  // replace with the new textInput element
+  $(this).replaceWith(textInput);
+  // highlight the input box for user
+  textInput.trigger("focus");
+  taskIdCounter++;
+  // on click add a new p tag with the id - this way we can keep track of the tasks
+
+}) 
+
+// this function will set the colours based on time
+
+  });
