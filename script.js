@@ -10,6 +10,7 @@ let tasks = {
 };
 let getDate = moment().format ("Do MMMM YYYY h:mm:ss a");
 let getHour = parseInt(moment().format ("HH"));
+let taskTimeStatusSaveBtn;
 let taskIdCounter = 0;
 // data-task-Id is linked with taskIdCounter. every time we add a new task we will add taskCounterId ++
 // setAttribute("data-task-id", taskIdCounter);The setAttribute() method can be used to add or update any attribute on an HTML element, but the only attribute we need for now is data-task-id, which we set to the current value of taskIdCounter.
@@ -64,16 +65,16 @@ $(".form-control").on("click", function () {
   let taskTimeStatus = parseInt($("textarea").siblings(".input-group-prepend").find("span").text());
   console.log(taskTimeStatus);
   
-  tasks[taskTimeStatus].text = currentText;
+  tasks[taskTimeStatus].text = currentText
 
   taskIdCounter++;
 }) 
 
 $(".save-button").on("click", function () {
   console.log("save button was clicked");
-  // console.log($(this).siblings(".input-group-prepend").find("span").text());
-  console.log($(this).closest('textarea').text());
-  $(this).closest('#form-control').text
+  
+  taskTimeStatusSaveBtn = parseInt($(this).siblings(".input-group-prepend").find("span").text())
+  console.log(taskTimeStatusSaveBtn);
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
 })
