@@ -1,17 +1,18 @@
 let tasks = {
-    9: [],
-    10: [],
-    11: [],
-    12: [],
-    14: [],
-    15: [],
-    16: [],
-    17: [],
+    zero: [],
+    one: [],
+    two: [],
+    three: [],
+    four: [],
+    five: [],
+    six: [],
+    seven: [],
 };
 let getDate = moment().format ("Do MMMM YYYY h:mm:ss a");
 let getHour = parseInt(moment().format ("HH"));
 let taskTimeStatusSaveBtn;
 let taskIdCounter = 0;
+let taskArrPositionConverter;
 // data-task-Id is linked with taskIdCounter. every time we add a new task we will add taskCounterId ++
 // setAttribute("data-task-id", taskIdCounter);The setAttribute() method can be used to add or update any attribute on an HTML element, but the only attribute we need for now is data-task-id, which we set to the current value of taskIdCounter.
 
@@ -68,21 +69,29 @@ $(".form-control").on("click", function () {
   let taskTimeStatus = parseInt($("textarea").siblings(".input-group-prepend").find("span").text());
   console.log(taskTimeStatus);
 
-  let taskArrPositionConverter = taskTimeStatus - 9;
-  
-  console.log(taskArrPositionConverter);
+  let taskArrPositionNumber = taskTimeStatus - 9;
 
-  tasks[taskTimeStatus].text = text;
-  console.log(tasks.9);
+  if(taskArrPositionNumber === 0) {
+    taskArrPositionConverter = "zero";
+  }if (taskArrPositionNumber === 1) {
+    taskArrPositionConverter = "one";
+  }if (taskArrPositionNumber === 2) {
+    taskArrPositionConverter = "two";
+  }if (taskArrPositionNumber === 3) {
+    taskArrPositionConverter = "three";
+  }if (taskArrPositionNumber === 4) {
+    taskArrPositionConverter = "four";
+  }if (taskArrPositionNumber === 5) {
+    taskArrPositionConverter = "five";
+  }
+
+  console.log(tasks[taskArrPositionConverter]);
+  tasks[taskArrPositionConverter].push(text);
   taskIdCounter++;
 }) 
 
 $(".save-button").on("click", function () {
-  console.log("save button was clicked");
-  
   taskTimeStatusSaveBtn = parseInt($(this).siblings(".input-group-prepend").find("span").text())
-  console.log(taskTimeStatusSaveBtn);
-
   localStorage.setItem("tasks", JSON.stringify(tasks));
 })
 
