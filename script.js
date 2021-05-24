@@ -42,21 +42,13 @@ $("span").each(function(index) {
 
 // When that happens, we need to collect a few pieces of data: the 
 // current value of the element, the parent element's ID, and the element's position in the list.
-$(".form-control").on("click", function () {
-  console.log("this has been clicked");
- 
+$(".form-control").on("click", function () { 
   // $(".form-control").on("blur", "textarea",function () {  
   // } );
-   // console log the currently selected elemnt
-  //  console.log(this);
    // get current text
-  let currentText = $(this).text().trim();
-  console.log(currentText);
-  
+  let currentText = $(this).text().trim();  
   // this generates a ptag on click on that specific 
-  console.log(this);
   $("<p>").appendTo(this);
-  console.log($(this).find("p"));
   // let clickedTextArea = $(this);
   let dynamicPTag = $(this).find("p").addClass("form-control").attr("data-task-id", taskIdCounter).text(currentText);
   console.log(dynamicPTag.text());
@@ -64,26 +56,22 @@ $(".form-control").on("click", function () {
 
   // create a new text area input
   let textInput = $("<textarea>").addClass("form-control").attr("data-task-id", taskIdCounter).text(dynamicPTag.text());
-  console.log(textInput.text());
-  
+  console.log(textInput.val());
+
   // this replaces the div with the textinput
   $(this).replaceWith(textInput);
-
-  let taskTimeStatus = $(this).closest(".input-group-prepend")
-  .find("span").text;
+  // this converts the time into an intiger which can be linked to the array.
+  let taskTimeStatus = parseInt($("textarea").siblings(".input-group-prepend").find("span").text());
   console.log(taskTimeStatus);
-
-  // tasks[status]
-
-  // console.log(taskIdCounter);
   
-  taskIdCounter++;
+  tasks[taskTimeStatus].text = currentText;
 
+  taskIdCounter++;
 }) 
 
 $(".save-button").on("click", function () {
   console.log("save button was clicked");
-  console.log($(this).closest('#form-control').prevObject.context.parentElement.nextElementSibling.innerText);
+  // console.log($(this).siblings(".input-group-prepend").find("span").text());
   console.log($(this).closest('textarea').text());
   $(this).closest('#form-control').text
 
