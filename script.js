@@ -11,7 +11,6 @@ let tasks = {
 };
 let getDate = moment().format ("Do MMMM YYYY h:mm:ss a");
 let getHour = parseInt(moment().format ("HH"));
-let taskIdCounter = 0;
 let taskArrPositionConverter;
 
 // Jquery methods
@@ -34,11 +33,14 @@ let indexTimeConverter = parseInt(index) + 9;
   }
 })
 
-$(".form-control").on("click", function () { 
-   // get current text - "this" is currently set to the input tag.
-  let currentText = $(this).val().trim();    
+$(".save-button").on("click", function () {
+  localStorage.clear(); 
+  // get current text - "this" is currently set to the input tag.
+   let currentText = $(this).siblings("input").val().trim();    
+   console.log(currentText);
   // // finds the corresponding time hour of where the button is clicked and this converts the time into an intiger which can be linked to the array.
   let taskTimeStatus = parseInt($(this).siblings(".input-group-prepend").find("span").text());
+  console.log(taskTimeStatus);
   // console.log(taskTimeStatus);
   let taskArrPositionNumber = taskTimeStatus - 9;
   if  (taskArrPositionNumber === 0) {
@@ -60,11 +62,8 @@ $(".form-control").on("click", function () {
   }if (taskArrPositionNumber === 8) {
     taskArrPositionConverter = "eight";
   }
-  tasks[taskArrPositionConverter].push(currentText);
-  taskIdCounter++;
-}) 
 
-$(".save-button").on("click", function () {
+  tasks[taskArrPositionConverter].push(currentText);
   localStorage.setItem("tasks", JSON.stringify(tasks));
 })
 
