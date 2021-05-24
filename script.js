@@ -44,32 +44,46 @@ $("span").each(function(index) {
 // current value of the element, the parent element's ID, and the element's position in the list.
 $(".form-control").on("click", function () {
   console.log("this has been clicked");
-  $(".form-control").on("blur", "textarea",function () {  
-  } );
+ 
+  // $(".form-control").on("blur", "textarea",function () {  
+  // } );
    // console log the currently selected elemnt
-   console.log(this);
+  //  console.log(this);
    // get current text
   let currentText = $(this).text().trim();
   console.log(currentText);
-  // create a new text area input
-  let textInput = $("<textarea>").addClass("form-control").attr("data-task-id", taskIdCounter). text(currentText);
-  // console.log(textInput);
-  // console.log(taskIdCounter);
-  // replace with the new textInput element
-  $(this).replaceWith(textInput);
-  // 
-  let textP = $("p").addClass("m-1").attr("data-task-id");
+  
+  // this generates a ptag on click on that specific 
   console.log(this);
-  $(this).replaceWith(textP);
-  // highlight the input box for user
-  textInput.trigger("focus");
-  // on click add a new p tag with the id - this way we can keep track of the tasks
+  $("<p>").appendTo(this);
+  console.log($(this).find("p"));
+  // let clickedTextArea = $(this);
+  let dynamicPTag = $(this).find("p").addClass("form-control").attr("data-task-id", taskIdCounter).text(currentText);
+  console.log(dynamicPTag.text());
+  console.log(this);
+
+  // create a new text area input
+  let textInput = $("<textarea>").addClass("form-control").attr("data-task-id", taskIdCounter).text(dynamicPTag.text());
+  console.log(textInput.text());
+  
+  // this replaces the div with the textinput
+  $(this).replaceWith(textInput);
+
+  let taskTimeStatus = $(this).closest(".input-group-prepend")
+  .find("span").text;
+  console.log(taskTimeStatus);
+
+  // tasks[status]
+
+  // console.log(taskIdCounter);
+  
   taskIdCounter++;
 
 }) 
 
 $(".save-button").on("click", function () {
   console.log("save button was clicked");
+  console.log($(this).closest('#form-control').prevObject.context.parentElement.nextElementSibling.innerText);
   console.log($(this).closest('textarea').text());
   $(this).closest('#form-control').text
 
