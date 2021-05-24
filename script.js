@@ -1,13 +1,13 @@
 let tasks = {
-    zero: [],
-    one: [],
-    two: [],
-    three: [],
-    four: [],
-    five: [],
-    six: [],
-    seven: [],
-    eight: [],
+    // zero: [],
+    // one: [],
+    // two: [],
+    // three: [],
+    // four: [],
+    // five: [],
+    // six: [],
+    // seven: [],
+    // eight: [],
 };
 let getDate = moment().format ("Do MMMM YYYY h:mm:ss a");
 let getHour = parseInt(moment().format ("HH"));
@@ -34,7 +34,7 @@ let indexTimeConverter = parseInt(index) + 9;
 })
 
 $(".save-button").on("click", function () {
-  localStorage.clear(); 
+  localStorage.clear(tasks); 
   // get current text - "this" is currently set to the input tag.
    let currentText = $(this).siblings("input").val().trim();    
    console.log(currentText);
@@ -69,7 +69,7 @@ $(".save-button").on("click", function () {
 
 var loadTasks = function() {
   tasks = JSON.parse(localStorage.getItem("tasks"));
-
+console.log(tasks);
   // if nothing in localStorage, create a new object to track all task status arrays
   if (!tasks) {
     tasks = {
@@ -85,14 +85,22 @@ var loadTasks = function() {
   };
   }
 
-  // loop over object properties
-  $.each(tasks, function(list, arr) {
-    console.log(list, arr);
-    // then loop over sub-array
-    arr.forEach(function(task) {
-      createTask(task.text);
-    });
-  });
+
+console.log(tasks.zero[tasks.zero.length-1]);
+console.log($("btn-0").siblings("input").text());
+tasks.zero[tasks.zero.length-1] = $("btn-0").siblings("input").text();
+  tasks.one[tasks.one.length-1] = $("btn-1").siblings("input").val();
+  tasks.two[tasks.two.length-1] =$("btn-2").siblings("input").val();
+  tasks.three[tasks.three.length-1] =$("btn-3").siblings("input").val();
+  tasks.four[tasks.four.length-1] =$("btn-4").siblings("input").val()
+  tasks.five[tasks.five.length-1] =$("btn-5").siblings("input").val()
+  tasks.six[tasks.six.length-1] =$("btn-6").siblings("input").val()
+  tasks.seven[tasks.seven.length-1] =$("btn-7").siblings("input").val()
+  tasks.eight[tasks.eight.length-1] =$("btn-8").siblings("input").val()
+
+
 };
 
+// load tasks for the first time
+loadTasks()
 });
