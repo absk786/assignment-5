@@ -48,25 +48,32 @@ $(".form-control").on("click", function () {
   // } );
    // get current text
   let currentText = $(this).text().trim();  
+  console.log(currentText);
   // this generates a ptag on click on that specific 
   $("<p>").appendTo(this);
   // let clickedTextArea = $(this);
   let dynamicPTag = $(this).find("p").addClass("form-control").attr("data-task-id", taskIdCounter).text(currentText);
-  console.log(dynamicPTag.text());
-  console.log(this);
-
   // create a new text area input
   let textInput = $("<textarea>").addClass("form-control").attr("data-task-id", taskIdCounter).text(dynamicPTag.text());
   console.log(textInput.val());
 
   // this replaces the div with the textinput
   $(this).replaceWith(textInput);
+  textInput.trigger("focus");
+  
+  // get the textareas current value/text
+  let text = $(this).val() .trim
+  console.log(text);
   // this converts the time into an intiger which can be linked to the array.
   let taskTimeStatus = parseInt($("textarea").siblings(".input-group-prepend").find("span").text());
   console.log(taskTimeStatus);
-  
-  tasks[taskTimeStatus].text = currentText
 
+  let taskArrPositionConverter = taskTimeStatus - 9;
+  
+  console.log(taskArrPositionConverter);
+
+  tasks[taskTimeStatus].text = text;
+  console.log(tasks.9);
   taskIdCounter++;
 }) 
 
