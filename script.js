@@ -37,7 +37,7 @@ $("span").each(function(index) {
   }
   else if ( indexTimeConverter > getHour) {
     // console.log("not found")
-    $(this).closest("div").css({"border": "3px solid yellow"}) 
+    $(this).closest("div").css({"border": "3px solid orangered"}) 
   }
 
 })
@@ -47,31 +47,16 @@ $("span").each(function(index) {
 $(".form-control").on("click", function () { 
   // $(".form-control").on("blur", "textarea",function () {  
   // } );
-   // get current text
+   // get current text - "this" is currently set to the input tag.
+   console.log($(this));
   let currentText = $(this).text().trim();  
   console.log(currentText);
-  // this generates a ptag on click on that specific 
-  $("<p>").appendTo(this);
-  // let clickedTextArea = $(this);
-  let dynamicPTag = $(this).find("p").addClass("form-control").attr("data-task-id", taskIdCounter).text(currentText);
-  // create a new text area input
-  let textInput = $("<textarea>").addClass("form-control").attr("data-task-id", taskIdCounter).text(dynamicPTag.text());
-  console.log(textInput.val());
-
-  // this replaces the div with the textinput
-  $(this).replaceWith(textInput);
-  textInput.trigger("focus");
   
-  // get the textareas current value/text
-  let text = $(this).val() .trim
-  console.log(text);
-  // this converts the time into an intiger which can be linked to the array.
-  let taskTimeStatus = parseInt($("textarea").siblings(".input-group-prepend").find("span").text());
-  console.log(taskTimeStatus);
-
+  // // this converts the time into an intiger which can be linked to the array.
+  // let taskTimeStatus = parseInt($("textarea").siblings(".input-group-prepend").find("span").text());
+  // console.log(taskTimeStatus);
   let taskArrPositionNumber = taskTimeStatus - 9;
-
-  if(taskArrPositionNumber === 0) {
+  if  (taskArrPositionNumber === 0) {
     taskArrPositionConverter = "zero";
   }if (taskArrPositionNumber === 1) {
     taskArrPositionConverter = "one";
@@ -84,7 +69,7 @@ $(".form-control").on("click", function () {
   }if (taskArrPositionNumber === 5) {
     taskArrPositionConverter = "five";
   }
-
+  
   console.log(tasks[taskArrPositionConverter]);
   tasks[taskArrPositionConverter].push(text);
   taskIdCounter++;
@@ -94,5 +79,25 @@ $(".save-button").on("click", function () {
   taskTimeStatusSaveBtn = parseInt($(this).siblings(".input-group-prepend").find("span").text())
   localStorage.setItem("tasks", JSON.stringify(tasks));
 })
+});
 
-  });
+
+
+
+
+
+
+
+
+
+// this generates a ptag on click on that specific 
+// $("<p>").appendTo(this);
+// // let clickedTextArea = $(this);
+// let dynamicPTag = $(this).find("p").addClass("form-control").attr("data-task-id", taskIdCounter).text(currentText);
+// // create a new text area input
+// let textInput = $("<textarea>").addClass("form-control").attr("data-task-id", taskIdCounter).text(dynamicPTag.text());
+// console.log(textInput.val());
+
+// // this replaces the div with the textinput
+// $(this).replaceWith(textInput);
+// textInput.trigger("focus");
