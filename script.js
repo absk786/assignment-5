@@ -1,13 +1,4 @@
 let tasks = {
-    // zero: [],
-    // one: [],
-    // two: [],
-    // three: [],
-    // four: [],
-    // five: [],
-    // six: [],
-    // seven: [],
-    // eight: [],
 };
 let getDate = moment().format ("Do MMMM YYYY h:mm:ss a");
 let getHour = parseInt(moment().format ("HH"));
