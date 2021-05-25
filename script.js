@@ -34,7 +34,6 @@ let indexTimeConverter = parseInt(index) + 9;
 })
 
 $(".save-button").on("click", function () {
-  localStorage.clear(tasks); 
   // get current text - "this" is currently set to the input tag.
    let currentText = $(this).siblings("input").val().trim();    
    console.log(currentText);
@@ -85,20 +84,15 @@ console.log(tasks);
   };
   }
 
-
-console.log(tasks.zero[tasks.zero.length-1]);
-console.log($("btn-0").siblings("input").text());
-tasks.zero[tasks.zero.length-1] = $("btn-0").siblings("input").text();
-  tasks.one[tasks.one.length-1] = $("btn-1").siblings("input").val();
-  tasks.two[tasks.two.length-1] =$("btn-2").siblings("input").val();
-  tasks.three[tasks.three.length-1] =$("btn-3").siblings("input").val();
-  tasks.four[tasks.four.length-1] =$("btn-4").siblings("input").val()
-  tasks.five[tasks.five.length-1] =$("btn-5").siblings("input").val()
-  tasks.six[tasks.six.length-1] =$("btn-6").siblings("input").val()
-  tasks.seven[tasks.seven.length-1] =$("btn-7").siblings("input").val()
-  tasks.eight[tasks.eight.length-1] =$("btn-8").siblings("input").val()
-
-
+  $("#btn-0").siblings("input").val(tasks.zero[tasks.zero.length-1]);
+  $("#btn-1").siblings("input").val(tasks.one[tasks.one.length-1] );
+  $("#btn-2").siblings("input").val( tasks.two[tasks.two.length-1] );
+  $("#btn-3").siblings("input").val(tasks.three[tasks.three.length-1]);
+  $("#btn-4").siblings("input").val(tasks.four[tasks.four.length-1]);
+  $("#btn-5").siblings("input").val(tasks.five[tasks.five.length-1]);
+  $("#btn-6").siblings("input").val(tasks.six[tasks.six.length-1]);
+  $("#btn-7").siblings("input").val(tasks.seven[tasks.seven.length-1]);
+  $("#btn-8").siblings("input").val(tasks.eight[tasks.eight.length-1]);
 };
 
 // load tasks for the first time
