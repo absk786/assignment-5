@@ -12,15 +12,16 @@ $("#todaysDateEl").text(getDate);
 // select all span tags
 $("span").each(function(index) {
   // this adds 9 to the index of the span tags
+  console.log($(this))
 let indexTimeConverter = parseInt(index) + 9;
   if (indexTimeConverter === getHour) {
-    $(this).closest("div").css({"border": "3px solid green"})    
+    $(this).closest("div").siblings("input").css({"border": "3px solid green","color":"green"})    
  }
   else if ( indexTimeConverter < getHour) {
-    $(this).closest("div").css({"border": "3px solid blue"}) 
+    $(this).closest("div").siblings("input").css({"border": "3px solid blue","color":"blue"}) 
   }
   else if ( indexTimeConverter > getHour) {
-    $(this).closest("div").css({"border": "3px solid orangered"}) 
+    $(this).closest("div").siblings("input").css({"border": "3px solid orangered","color":"orangered"}) 
   }
 })
 
